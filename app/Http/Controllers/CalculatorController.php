@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Calculation;
 
+// kelas yang mendefinisikan controller
 class CalculatorController extends Controller
 {
     public function calculate(Request $request)
@@ -48,5 +49,11 @@ class CalculatorController extends Controller
 
         // Kembali ke halaman utama dengan pesan
         return back()->with('info', 'Kalkulasi berhasil dihapus');
+    }
+
+    public function showCalculator()
+    {
+        $calculations = Calculation::all(); // Mengambil semua data kalkulasi
+        return view('calculator', compact('calculations')); // Mengirim data ke view
     }
 }
